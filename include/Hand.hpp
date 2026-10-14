@@ -13,6 +13,9 @@ class Hand {
         void clear(); //Clear the hand
         bool isSoft() const; //Check if the hand is soft (contains an Ace counted as 11)
         bool isBust() const; //Check if the hand is bust (value exceeds 21)
+        int size() const; //Get the number of cards in the hand 
         int getValue() const; //Get the total value of the hand
+        int getNumCards() const;//Get the number of cards in the hand
+        Card getCardNum(int i) const;
         std::string toString() const; //Get a string representation of the hand
 };

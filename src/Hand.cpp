@@ -1,6 +1,7 @@
 #include "Hand.hpp"
 
 #include <vector>
+#include <stdexcept>
 
 Hand::Hand() : cards() {} //Constructor
 
@@ -58,5 +59,26 @@ bool Hand::isSoft() const {
     return numAces > 0;   //any ace left still counted as 11
 }
 
+bool Hand::isBust() const {
+    return getValue() > 21;
+}
 
+void Hand::clear() {
+    cards.clear();
+}
+
+int Hand::getNumCards() const {
+    return cards.size();
+}
+
+int Hand::size() const {
+    return static_cast<int>(cards.size());
+}
+
+Card Hand::getCardNum(int i) const {
+    if (i < 0 || i >= size()) {
+        throw std::out_of_range("Hand::at - bad index");
+    }
+    return cards[i]; //Return the card at the specified index
+}
 
