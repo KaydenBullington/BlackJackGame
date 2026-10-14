@@ -59,7 +59,4 @@ bool Hand::isSoft() const {
 }
 
 
-//  std::string Hand::toString() const {
-
-//  } //Get a string representation of the hand
 
