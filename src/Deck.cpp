@@ -6,8 +6,7 @@
 
 Deck::Deck() { reset(); }
 
-Deck::Deck(const std::vector<Card> &stacked)
-    : cards(stacked.rbegin(), stacked.rend()) {}
+Deck::Deck(const std::vector<Card> &stacked) : cards(stacked.rbegin(), stacked.rend()) {}
 
 void Deck::reset() {
   cards.clear();
