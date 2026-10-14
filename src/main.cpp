@@ -1,16 +1,13 @@
-// Starter main. Right now it only proves the classes link together.
-// Replace the body as described in the assignment README:
+//./game          -> runs your TuiView (FTXUI)
+//./game --text   -> runs your ConsoleView (cout/cin)
 //
-//   ./game          -> runs your TuiView (FTXUI)
-//   ./game --text   -> runs your ConsoleView (cout/cin)
+//Final shape (sketch):
 //
-// Final shape (sketch):
-//
-//   VideoPoker game;            // or Blackjack game;
-//   std::unique_ptr<GameView> view;
-//   if (textMode) view = std::make_unique<ConsoleView>(game);
-//   else          view = std::make_unique<TuiView>(game);
-//   view->run();
+//Video Blackjack game;
+//std::unique_ptr<GameView> view;
+//if (textMode) view = std::make_unique<ConsoleView>(game);
+//else          view = std::make_unique<TuiView>(game);
+//view->run();
 
 #include "Card.hpp"
 #include "Deck.hpp"
