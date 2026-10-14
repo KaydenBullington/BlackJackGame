@@ -67,16 +67,12 @@ void Hand::clear() {
     cards.clear();
 }
 
-int Hand::getNumCards() const {
-    return cards.size();
-}
-
-int Hand::size() const {
+int Hand::handSize() const {
     return static_cast<int>(cards.size());
 }
 
 Card Hand::getCardNum(int i) const {
-    if (i < 0 || i >= size()) {
+    if (i < 0 || i >= handSize()) {
         throw std::out_of_range("Hand::at - bad index");
     }
     return cards[i]; //Return the card at the specified index
