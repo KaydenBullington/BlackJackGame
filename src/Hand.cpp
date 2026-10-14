@@ -2,79 +2,110 @@
 
 #include <vector>
 #include <stdexcept>
+#include <string>
 
-Hand::Hand() : cards() {} //Constructor
+Hand::Hand() : cards() {} // Constructor
 
-
-//Add a card to the hand
-void Hand::addCard(const Card& c) {
+// Add a card to the hand
+void Hand::addCard(const Card &c)
+{
     cards.push_back(c);
-} 
-
-//Get the total value of the hand
-int Hand::getValue() const {
-    int total = 0;
-    int numAces = 0;
-        
-        for(const Card& c : cards) {
-            int rank = c.getRank();
-            if(rank > 9) { //Face cards
-                total += 10;
-            } else if(rank == 0) { //Ace
-                total += 11;
-                numAces++;
-            } else {
-                total += rank + 1; //Number cards
-            }
-        }
-
-        while(total > 21 && numAces > 0) {
-            total -= 10; //Count Ace as 1 instead of 11
-            numAces--;
-        }
-
-        return total;
 }
-bool Hand::isSoft() const {
+
+// Get the total value of the hand
+int Hand::getValue() const
+{
     int total = 0;
     int numAces = 0;
 
-        for(const Card& c : cards) {
-            int rank = c.getRank();
-                if(rank > 9) { //Face cards
-                     total += 10;
-                } else if(rank == 0) { //Ace
-                    total += 11;
-                    numAces++;
-                } else {
-                    total += rank + 1; //Number cards
-                }
+    for (const Card &c : cards)
+    {
+        int rank = c.getRank();
+        if (rank > 9)
+        { // Face cards
+            total += 10;
         }
-
-        while (total > 21 && numAces > 0) {
-            total -= 10;
-            numAces--;
+        else if (rank == 0)
+        { // Ace
+            total += 11;
+            numAces++;
         }
+        else
+        {
+            total += rank + 1; // Number cards
+        }
+    }
 
-    return numAces > 0;   //any ace left still counted as 11
+    while (total > 21 && numAces > 0)
+    {
+        total -= 10; // Count Ace as 1 instead of 11
+        numAces--;
+    }
+
+    return total;
+}
+bool Hand::isSoft() const
+{
+    int total = 0;
+    int numAces = 0;
+
+    for (const Card &c : cards)
+    {
+        int rank = c.getRank();
+        if (rank > 9)
+        { // Face cards
+            total += 10;
+        }
+        else if (rank == 0)
+        { // Ace
+            total += 11;
+            numAces++;
+        }
+        else
+        {
+            total += rank + 1; // Number cards
+        }
+    }
+
+    while (total > 21 && numAces > 0)
+    {
+        total -= 10;
+        numAces--;
+    }
+
+    return numAces > 0; // any ace left still counted as 11
 }
 
-bool Hand::isBust() const {
+bool Hand::isBust() const
+{
     return getValue() > 21;
 }
 
-void Hand::clear() {
+void Hand::clear()
+{
     cards.clear();
 }
 
-int Hand::handSize() const {
+int Hand::handSize() const
+{
     return static_cast<int>(cards.size());
 }
 
-Card Hand::getCardNum(int i) const {
-    if (i < 0 || i >= handSize()) {
+const Card& Hand::getCardNum(int i) const
+{
+    if (i < 0 || i >= handSize())
+    {
         throw std::out_of_range("Hand::at - bad index");
     }
-    return cards[i]; //Return the card at the specified index
+    return cards[i]; // Return the card at the specified index
 }
 
+std::string Hand::toString() const
+{
+    std::string result;
+    for (const Card &c : cards)
+    {
+        result += c.toString() + " ";
+    }
+    return result;
+}

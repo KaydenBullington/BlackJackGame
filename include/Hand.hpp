@@ -15,6 +15,6 @@ class Hand {
         bool isBust() const; //Check if the hand is bust (value exceeds 21)
         int handSize() const; //Get the number of cards in the hand 
         int getValue() const; //Get the total value of the hand
-        Card getCardNum(int i) const;
+        const Card& getCardNum(int i) const;
         std::string toString() const; //Get a string representation of the hand
 };
