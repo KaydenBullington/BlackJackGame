@@ -2,26 +2,27 @@
 
 #include <vector>
 
-Blackjack::Blackjack() : chips(1000), bet(0), deck(), dealerHand(), playerHand() {
+Blackjack::Blackjack() : chips(1000), bets(0), deck(), dealerHand(), playerHands() {
     deck.shuffle(); // Shuffle the deck at the start of the game
 }
 
 void Blackjack::startNewGame(int bet) {
-    this->bet = bet;
-    playerHand.clear();
+    this->bets = {bet};//Initial bet fo rthe efirst hand
+    playerHands.clear();
     dealerHand.clear();
     deck.reset();
     deck.shuffle();
 
     // Deal initial cards
-    playerHand.addCard(deck.deal());
+    playerHands.push_back(Hand());
+    playerHands[0].addCard(deck.deal());
     dealerHand.addCard(deck.deal());
-    playerHand.addCard(deck.deal());
+    playerHands[0].addCard(deck.deal());
     dealerHand.addCard(deck.deal());
 }
 
 void Blackjack::playerHit() {
-    playerHand.addCard(deck.deal());
+    playerHands[currentHand].addCard(deck.deal());
 }
 
 void Blackjack::playerStand() {
@@ -29,12 +30,16 @@ void Blackjack::playerStand() {
 }
 
 void Blackjack::playerDoubleDown() {
-    chips -= bet; //sub additional bet
-    bet *= 2; //Double it
-    playerHand.addCard(deck.deal()); //Player draws one card
+    chips -= bets[currentHand]; //sub additional bet
+    bets[currentHand] *= 2; //Double it
+    playerHands[currentHand].addCard(deck.deal()); //Player draws one card
     dealerPlay(); //Dealer plays after player doubles down
 }
 
 void Blackjack::playerSplit() {
-   
+    if (canSplit()) {}
 }
+
+
+
+
