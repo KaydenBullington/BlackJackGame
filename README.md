@@ -48,7 +48,10 @@ After the first time, only `cmake --build build` is needed. Re-run the first lin
 - Tests in `src/Tests.cpp` use stacked decks so every rule can be checked without luck.
 
 ## Screenshot
-(TUI mid-game screenshot goes here)
+<img width="2880" height="1704" alt="Screenshot 2026-10-29 220739" src="https://github.com/user-attachments/assets/ffe0d24b-2d1c-42af-a073-c39fa8654747" />
+<img width="2880" height="1708" alt="Screenshot 2026-10-29 220445" src="https://github.com/user-attachments/assets/86a4c985-4508-48eb-88b4-fc4a7099e3ca" />
+
+
 
 ## Known issues
 None that I know of.
