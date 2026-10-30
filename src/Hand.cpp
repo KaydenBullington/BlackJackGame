@@ -81,6 +81,12 @@ bool Hand::isBust() const
     return getValue() > 21;
 }
 
+//A natural is exactly two cards that add up to 21 (Ace + 10-value card)
+bool Hand::isBlackjack() const
+{
+    return handSize() == 2 && getValue() == 21;
+}
+
 void Hand::clear()
 {
     cards.clear();

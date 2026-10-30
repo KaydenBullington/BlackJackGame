@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Card.hpp"
+#include <string>
 #include <vector>
 
 
@@ -13,6 +14,7 @@ class Hand {
         void clear(); //Clear the hand
         bool isSoft() const; //Check if the hand is soft (contains an Ace counted as 11)
         bool isBust() const; //Check if the hand is bust (value exceeds 21)
+        bool isBlackjack() const; //Check if the hand is a natural (Ace + 10-value card, 2 cards)
         int handSize() const; //Get the number of cards in the hand 
         int getValue() const; //Get the total value of the hand
         const Card& getCardNum(int i) const;
